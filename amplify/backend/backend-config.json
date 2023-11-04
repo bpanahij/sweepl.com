@@ -1,0 +1,192 @@
+{
+  "api": {
+    "sweeplcom": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-11-03T03:25:01.920Z",
+              "apiKeyExpirationDays": 365,
+              "description": "sweeplcom"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "sweeplcomf192df88": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "PHONE_NUMBER"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "respondToTwilio": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "sweeplcom"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "sweeplcomf192df88"
+        },
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "geo",
+          "resourceName": "sweeplcom"
+        },
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "geo",
+          "resourceName": "sweeplcomindex"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sweeplcomcommon"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "sweeplcomcommon": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    }
+  },
+  "geo": {
+    "sweeplcom": {
+      "accessType": "AuthorizedAndGuestUsers",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "sweeplcomf192df88"
+        }
+      ],
+      "isDefault": true,
+      "mapStyle": "VectorEsriLightGrayCanvas",
+      "providerPlugin": "awscloudformation",
+      "service": "Map"
+    },
+    "sweeplcomindex": {
+      "accessType": "AuthorizedAndGuestUsers",
+      "dataProvider": "HERE",
+      "dataSourceIntendedUse": "SingleUse",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "sweeplcomf192df88"
+        }
+      ],
+      "isDefault": true,
+      "providerPlugin": "awscloudformation",
+      "service": "PlaceIndex"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_respondToTwilio_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "respondToTwilio"
+        }
+      ]
+    },
+    "AMPLIFY_function_respondToTwilio_openaiApiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "respondToTwilio"
+        }
+      ]
+    },
+    "AMPLIFY_function_respondToTwilio_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "respondToTwilio"
+        }
+      ]
+    },
+    "AMPLIFY_function_respondToTwilio_twilioAccountSid": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "respondToTwilio"
+        }
+      ]
+    },
+    "AMPLIFY_function_respondToTwilio_twilioAuthToken": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "respondToTwilio"
+        }
+      ]
+    },
+    "AMPLIFY_function_sweeplcomcommon_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sweeplcomcommon"
+        }
+      ]
+    },
+    "AMPLIFY_function_sweeplcomcommon_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sweeplcomcommon"
+        }
+      ]
+    }
+  }
+}

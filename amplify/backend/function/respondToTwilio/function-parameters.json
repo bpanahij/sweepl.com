@@ -1,0 +1,55 @@
+{
+  "permissions": {
+    "api": {
+      "sweeplcom": [
+        "Query",
+        "Mutation"
+      ]
+    },
+    "auth": {
+      "sweeplcomf192df88": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "geo": {
+      "sweeplcom": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "sweeplcomindex": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "sweeplcomcommon",
+      "env": "dev",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "openaiApiKey",
+      "environmentVariableName": "OPENAI_API_KEY"
+    },
+    {
+      "cloudFormationParameterName": "twilioAccountSid",
+      "environmentVariableName": "TWILIO_ACCOUNT_SID"
+    },
+    {
+      "cloudFormationParameterName": "twilioAuthToken",
+      "environmentVariableName": "TWILIO_AUTH_TOKEN"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Set the directory to search for original files in
+src_dir="../assets/public/images/originals"
+# Set the directory to save resized images
+dest_dir="../assets/public/images/optimized"
+# Create the destination directory if it doesn't exist
+mkdir -p "$dest_dir"
+# Define the desired widths for each size
+sizes=(250 800)
+
+# Loop through all JPG and PNG files in the directory
+find "$src_dir" -type f \( -iname \*.webp \) -print0 | while read -d $'\0' file; do
+    # Extract just the filename without path
+    filename=$(basename -- "$file")
+    # Loop through each desired size and resize the image
+    for size in "${sizes[@]}"; do
+        # Generate the new filename with the size in the file name
+        newfile="${filename%.*}_${size}px.${filename##*.}"
+        # Generate the full path for the new file
+        fullpath_newfile="$dest_dir/$newfile"
+        # Resize the image to the desired width and save it with the new filename in the new directory
+        convert "$file" -resize "$size" "$fullpath_newfile"
+    done
+done
+
+# Print a message when all images have been resized
+echo "All images in $src_dir have been resized and saved in $dest_dir."

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Set the directory to search for files in
+dir="../assets/public/images/originals"
+
+# Recursively loop through all JPG and PNG files in the directory
+find "$dir" -type f \( -iname \*.png \) -print0 | while read -d $'\0' file; do
+    # Run the command on each file
+    convert "$file" -auto-orient "$file"
+    newfile="${file%.*}.webp"
+    cwebp -q 80 "$file" -o "$newfile"
+done
+
+# Print a message when all files have been processed
+echo "All JPG and PNG files in $dir have been processed."

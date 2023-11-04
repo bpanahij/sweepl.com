@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.maplibregl-control-container {
+  display: none !important;
+}

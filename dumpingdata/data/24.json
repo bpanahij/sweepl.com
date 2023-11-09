@@ -1,0 +1,10 @@
+{
+  "data": {
+    "searchDetections": {
+      "items": [],
+      "nextToken": null,
+      "total": 2207,
+      "aggregateItems": []
+    }
+  }
+}

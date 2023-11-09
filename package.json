@@ -14,11 +14,14 @@
     "@heroicons/react": "^2.0.18",
     "aws-amplify": "^5.3.11",
     "framer-motion": "^10.16.4",
+    "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "maplibre-gl-js-amplify": "^3.1.0",
     "mic-recorder-to-mp3": "^2.2.2",
     "next": "14.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-leaflet": "^4.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

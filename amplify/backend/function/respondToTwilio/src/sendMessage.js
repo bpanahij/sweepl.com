@@ -9,8 +9,8 @@ const sendSMS = async (to, body) => {
   const response = await client.messages
     .create({
       body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-      from: '+14158510412',
-      to: '+14153104985'
+      from: '+15017122661',
+      to: '+15558675310'
     })
   return response
 }

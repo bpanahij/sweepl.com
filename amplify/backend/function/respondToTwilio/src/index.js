@@ -10,21 +10,18 @@
 	OPENAI_API_KEY
 Amplify Params - DO NOT EDIT */
 
-const {sendSMS} = require('./sendMessage')
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
 exports.handler = async (event) => {
-  console.log(`EVENT: ${JSON.stringify(event)}`);
-  const response = await sendSMS('+14153104985', 'Hello from Lambda!')
-  console.log(JSON.stringify(response, null, ' '))
-  return {
-    statusCode: 200,
+    console.log(`EVENT: ${JSON.stringify(event)}`);
+    return {
+        statusCode: 200,
     //  Uncomment below to enable CORS requests
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "*"
-    },
-    body: JSON.stringify('Hello from Lambda!'),
-  };
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*"
+        },
+        body: JSON.stringify('Hello from Lambda!'),
+    };
 };

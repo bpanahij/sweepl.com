@@ -18,14 +18,14 @@
       "function": {
         "respondToTwilio": {
           "deploymentBucketName": "amplify-sweeplcom-dev-201624-deployment",
-          "s3Key": "amplify-builds/respondToTwilio-43494845564335314566-build.zip",
-          "openaiApiKey": "XXX",
+          "s3Key": "amplify-builds/respondToTwilio-6c7a6f7a4b676d6c6949-build.zip",
+          "openaiApiKey": "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",
           "twilioAccountSid": "ACe83e289f45f2d580743f4bd4565b9cde",
-          "twilioAuthToken": "XXXX"
+          "twilioAuthToken": "b4c3234d9092748bd7dcaa4aec49bc84"
         },
         "sweeplcomcommon": {
           "deploymentBucketName": "amplify-sweeplcom-dev-201624-deployment",
-          "s3Key": "amplify-builds/sweeplcomcommon-LambdaLayerVersion7389b0ef-build.zip"
+          "s3Key": "amplify-builds/sweeplcomcommon-LambdaLayerVersion6c526788-build.zip"
         }
       },
       "api": {
